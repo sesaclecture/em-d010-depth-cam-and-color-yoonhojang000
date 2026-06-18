@@ -8,7 +8,8 @@ import numpy as np
 #
 # OpenCV 함수를 활용하세요.
 def convert_to_hsv(image):
-    raise NotImplementedError
+    return cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    
 
 
 # 문제 2.
@@ -17,7 +18,7 @@ def convert_to_hsv(image):
 #
 # OpenCV 함수를 활용하세요.
 def convert_to_lab(image):
-    raise NotImplementedError
+    return cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
 
 
 # 문제 3.
@@ -45,7 +46,8 @@ def calculate_channel_mean(
     image,
     channel_index,
 ):
-    raise NotImplementedError
+    channel = image[:, :, channel_index]
+    return np.mean(channel)
 
 
 # 문제 4.
@@ -63,7 +65,8 @@ def create_color_mask(
     lower,
     upper,
 ):
-    raise NotImplementedError
+    return cv2.inRange(image, np.array(lower), np.array(upper))
+    
 
 
 # 문제 5.
@@ -74,4 +77,4 @@ def create_color_mask(
 #
 # 반환값은 픽셀 개수입니다.
 def count_mask_pixels(mask):
-    raise NotImplementedError
+    return np.sum(mask == 255)
